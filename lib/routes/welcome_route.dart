@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 
-class WelcomeRoute extends StatefulWildget {
+import 'home_route.dart';
+
+class WelcomeRoute extends StatelessWidget {
+
   @override
   _WelcomeRouteState createState() => _WelcomeRouteState();
 }
 
 class _WelcomeRouteState extends State<WelcomeRoute> {
+  bool _checkBoxIsChecked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Stack(
           children: <Widget>[
-            Align(
+            const Align(
               alignment: Alignment.center,
               child: Text(
                 'Bem-vindo',
@@ -28,7 +32,7 @@ class _WelcomeRouteState extends State<WelcomeRoute> {
               children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
+                  children: const <Widget>[
                     Text(
                       'Marcar como lido',
                       style: TextStyle(
@@ -40,18 +44,26 @@ class _WelcomeRouteState extends State<WelcomeRoute> {
                       width: 5,
                     ),
                     Checkbox(
-                      value: true,
+                      value: this._checkBoxIsChecked,
+                      onChanged: (status) {
+                        setState(() {
+                          this._checkBoxIsChecked = status;
+                        });
+                      },
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                const RaisedButton(
-                  onPressed: null,
+                RaisedButton(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeRoute()),
+                  ),
                   child:
-                    Text('Disabled Button', style: TextStyle(fontSize:20)),
-                )
+                    Text('Avançar', style: TextStyle(fontSize:20)),
+                ),
               ],
             )
           ],

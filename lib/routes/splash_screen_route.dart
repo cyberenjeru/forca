@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:forca/routes/welcome_route.dart';
 
 import '../widgets/circular_image_widget.dart';
 
@@ -13,6 +16,12 @@ class _SplashScreenRouteState extends State<SplashScreenRoute> {
   @override
   void initState() {
     super.initState();
+    Timer(Duration(seconds: 3), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => WelcomeRoute()),
+      );
+    });
   }
 
   @override
