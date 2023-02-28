@@ -24,7 +24,7 @@ class _HomeRouteState extends State<HomeRoute> {
                 'Vamos jogar?',
                 style: TextStyle(
                   fontSize: 40,
-                  fontWight: FontWeight.bold,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
